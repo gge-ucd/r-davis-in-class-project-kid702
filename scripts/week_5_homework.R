@@ -28,12 +28,11 @@ Survey_catalized <- surveys %>%
                                  weight >= 48 ~ "large"))
   tail(Survey_catalized)
   
-  ### Challenge
+  ### Challenge soft code quartiles
 surveys_no_NA_weight <- surveys %>% filter(.,!is.na(weight))
   
-Survey_catalized_challenge <- surveys %>% 
-    filter(.,!is.na(weight)) %>% 
-    mutate (weight_cat = case_when(weight <= quantile(surveys_no_NA_weight$weight,0.25) ~ "small",
+Survey_catalized_challenge <- surveys_no_NA_weight %>% 
+  mutate (weight_cat = case_when(weight <= quantile(surveys_no_NA_weight$weight,0.25) ~ "small",
                                    weight > quantile(surveys_no_NA_weight$weight,0.25) & weight < quantile(surveys_no_NA_weight$weight,0.75) ~ "medium",
                                    weight >= quantile(surveys_no_NA_weight$weight,0.75) ~ "large"))
   tail(Survey_catalized_challenge)
