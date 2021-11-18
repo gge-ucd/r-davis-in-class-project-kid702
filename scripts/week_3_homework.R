@@ -13,6 +13,7 @@ length(unique(surveys$species))
 ##or
 sum(!duplicated(surveys$species))
 
+#%>% pipes one function to another
 
 #call out the first 60 value at column 6,9,13 (species_id, weight, plot type)
 surveys_base<- head(surveys[c(6,9,13)],n=60)
@@ -41,3 +42,4 @@ challenge_base <-surveys_base[(surveys_base[,2]>150),]
 challenge_base
 challenge_base <-na.omit(challenge_base)
 challenge_base
+
